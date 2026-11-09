@@ -4,8 +4,6 @@ schema: 2
 title: Build a website
 icon: globe
 pitch: A one-page site you can grow: say what it should look like and what it needs, and see it change in the preview.
-animal: fox
-colors: 0e9f8e, ffffff
 crew: coder
 page_file: src/pages/{page}.tsx
 pages: /
