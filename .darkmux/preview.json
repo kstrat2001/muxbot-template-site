@@ -1,5 +1,5 @@
 {
-  "schema": "darkmux.preview/draft-2",
+  "schema": 1,
   "command": "npm run dev",
   "env": {
     "PORT": "{port}",
