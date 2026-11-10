@@ -1,6 +1,6 @@
 # Playbook: a website
 
-schema: 2
+schema: 3
 title: Build a website
 icon: globe
 pitch: A one-page site you can grow: say what it should look like and what it needs, and see it change in the preview.
@@ -8,14 +8,28 @@ crew: coder
 page_file: src/pages/{page}.tsx
 pages: /
 viewports: desktop, phone
+previews: desktop, phone
 
-This file is the recipe Mux Bot reads when someone starts a website from this template, in the format of [Mux Bot's template schema](https://github.com/kstrat2001/muxbot-templates/blob/main/SCHEMA.md) (schema 2). The lines above set up the new bot. The sections below are what Mux Bot asks first, the bot's persona, its first run (written from your answers; a line whose answer you left blank is left out), and the bot's skills: each skill says when it applies, what to do, which files to touch and when it's done.
+This file is the recipe Mux Bot reads when someone starts a website from this template, in the format of [Mux Bot's template schema](https://github.com/kstrat2001/muxbot-templates/blob/main/SCHEMA.md) (schema 3). The lines above set up the new bot. The sections below are what Mux Bot asks first, the bot's persona, its first run (written from your answers; a line whose answer you left blank is left out), and the bot's skills: each skill says when it applies, what to do, which files to touch and when it's done.
 
 ## Questions
 
 - What's the site called?
 - What is it for, in a sentence? (A portfolio, a small business, an event, a project.)
-- How should it feel? (For example: warm and classic, clean and modern, bold and dark, soft and friendly, quiet and minimal, elegant, retro, natural, techy, playful.)
+- How should it feel? (For example: warm and friendly, calm and quiet, bold and loud, playful.)
+- Pick a design.
+  key: design
+  previews: desktop, phone
+  - editorial: Editorial. Warm paper and a classic serif: a shop, a cafe, a writer, a maker.
+  - modern: Modern. Clean and bright with a vivid blue: an app, a product, a consultant.
+  - bold: Bold. Dark with huge poster type: a band, a studio, an event, a gym.
+  - friendly: Friendly. Soft, round and pastel: a bakery, a preschool, a community group.
+  - minimal: Minimal. Quiet black and white: a portfolio, an architect, a freelancer.
+  - luxe: Luxe. Elegant and airy with a fine serif: a salon, a jeweler, a hotel, a wedding.
+  - retro: Retro. Seventies print colors and a chunky slab: a diner, a record shop, a barber.
+  - natural: Natural. Earthy greens and clay: a garden, a farm, a yoga studio, a clinic.
+  - terminal: Terminal. Typewriter type on a grid: a developer, a tool, a tech project.
+  - playful: Playful. Bright blocks and sticker shapes: a toy shop, a party, a kids club.
 
 ## Conventions
 
@@ -28,7 +42,8 @@ You look after {name}, a website built with Vite, React and plain CSS. You make 
 ## First run
 
 Make {name} the site for {purpose}.
-Make it feel {feel}: first set `theme` in src/site.ts to the closest active design, then set that design's colors and fonts to match.
+Set `theme` in src/site.ts to {design}.
+Make it feel {feel}: adjust that design's colors and fonts to match, keeping its look.
 Rewrite the headline and intro on the home page for it, in plain words.
 
 ## Skill: Add a page
