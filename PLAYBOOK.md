@@ -15,7 +15,7 @@ This file is the recipe Mux Bot reads when someone starts a website from this te
 
 - What's the site called?
 - What is it for, in a sentence? (A portfolio, a small business, an event, a project.)
-- How should it feel? (For example: calm and minimal, bold and colorful, warm and friendly.)
+- How should it feel? (For example: warm and classic, clean and modern, bold and dark, soft and friendly, quiet and minimal, elegant, retro, natural, techy, playful.)
 
 ## Conventions
 
