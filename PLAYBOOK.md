@@ -19,7 +19,7 @@ This file is the recipe Mux Bot reads when someone starts a website from this te
 
 ## Conventions
 
-Vite + React + TypeScript, plain CSS. Each page is a component in src/pages/, registered in src/App.tsx and in the menu in src/site.ts; shared parts (header, footer, sections) are in src/components/; the look (colors, fonts, spacing) is the CSS variables at the top of src/styles.css.
+Vite + React + TypeScript, plain CSS. Each page is a component in src/pages/, registered in src/App.tsx and in the menu in src/site.ts; shared parts (header, footer, sections) are in src/components/; the look (colors, fonts, corners, spacing) is the CSS variables at the top of src/styles.css; the site's name, email address and menu are in src/site.ts.
 
 ## Persona
 
@@ -52,7 +52,7 @@ When: someone wants to change what a part of a page says or shows. "Change the h
 What to do: edit the section's component, or add a new one and place it on the page.
 
 Files and conventions:
-- Sections are in `src/components/` (`Hero.tsx`, `Features.tsx`, `Contact.tsx`); a page lists its sections in order (the home page is `src/pages/home.tsx`).
+- Sections are in `src/components/` (`Hero.tsx` with its picture `HeroArt.tsx`, `About.tsx`, `Services.tsx`, `Quote.tsx`, `Contact.tsx`); a page lists its sections in order (the home page is `src/pages/home.tsx`).
 - A new section is its own component with a `section` element, an `id`, a heading, and its own class in `src/styles.css`, inside a `container` div.
 - Keep the words short and concrete; use the user's own words when they give them.
 
@@ -65,7 +65,8 @@ When: someone wants different colors, fonts, spacing or feel. "Make it dark gree
 What to do: change the design variables first; touch individual rules only when a variable can't do it.
 
 Files and conventions:
-- Colors and fonts are the CSS variables at the top of `src/styles.css` (`--color-*`, `--font-*`), with a dark-mode set under `prefers-color-scheme: dark`; change both sets together.
+- Colors, fonts, corners and spacing are the CSS variables at the top of `src/styles.css` (`--color-*`, `--font-*`, `--heading-weight`, `--radius`, `--space`, `--section`), with a dark-mode set of colors under `prefers-color-scheme: dark`; change both sets together.
+- The heading font, Fraunces, is bundled in `src/fonts/` and declared with `@font-face` in `src/styles.css`, so it needs no network.
 - Keep text readable: body text on its background needs strong contrast.
 - A web font comes from Google Fonts with a `<link>` in `index.html`, then goes in `--font-body` or `--font-heading`.
 

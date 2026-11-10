@@ -1,6 +1,6 @@
 # Mux Bot website template
 
-A small website to start from: Vite, React and TypeScript with plain CSS. One page with a hero, a features row, a contact section and a footer, laid out for phones, tablets and desktops.
+A small website to start from: Vite, React and TypeScript with plain CSS. One page with a hero, an about section, a list of services, a quote, a contact section and a footer, laid out for phones, tablets and desktops, in light and dark.
 
 ## How Mux Bot uses it
 
@@ -24,9 +24,10 @@ Open http://127.0.0.1:5173. `npm run build` checks the types and builds the site
 
 ## Where things are
 
-- `src/pages/`: one file per page; `src/App.tsx` maps paths to pages and `src/site.ts` holds the site's name and menu.
-- `src/components/`: the header, footer and page sections.
-- `src/styles.css`: the look. Colors and fonts are the variables at the top.
+- `src/pages/`: one file per page; `src/App.tsx` maps paths to pages and `src/site.ts` holds the site's name, email address and menu.
+- `src/components/`: the header, footer and page sections, one file each.
+- `src/styles.css`: the look. Colors, fonts, corners and spacing are the variables at the top.
+- `src/fonts/`: the heading font (Fraunces, SIL Open Font License), bundled so the site needs no network.
 
 ## License
 

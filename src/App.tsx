@@ -15,8 +15,11 @@ export default function App() {
   const Page = pages[path] ?? NotFound
   return (
     <>
+      <a className="skip-link" href="#main">
+        Skip to content
+      </a>
       <Header />
-      <main>
+      <main id="main">
         <Page />
       </main>
       <Footer />
