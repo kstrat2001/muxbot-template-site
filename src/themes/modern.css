@@ -1,0 +1,276 @@
+/* ==========================================================================
+   MODERN: clean and bright, a crisp sans and one vivid blue.
+   Fits an app, a product, a consultant, a small company.
+
+   THE LOOK. Change the values in this block and the whole site follows.
+   ========================================================================== */
+:root[data-theme='modern'] {
+  /* Colors (light). The dark set is just below: change both together. */
+  --color-bg: #ffffff; /* page background */
+  --color-surface: #f3f5f9; /* tinted panels and bands */
+  --color-text: #0b1020; /* headings and body text */
+  --color-muted: #586074; /* secondary text */
+  --color-accent: #1746e0; /* buttons, links, highlights */
+  --color-accent-text: #ffffff; /* text on top of the accent color */
+  --color-border: #dfe4ec; /* thin lines */
+
+  /* Fonts. Geist is bundled in src/fonts/, so it works offline. */
+  --font-heading: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --heading-weight: 600; /* 500 is lighter, 700 is heavier */
+
+  /* Shape and spacing. */
+  --radius: 10px; /* corners of buttons and pictures; 999px makes pills */
+  --container: 1160px; /* widest the content gets */
+  --space: clamp(20px, 5vw, 48px); /* space at the left and right edges */
+  --section: clamp(64px, 9vw, 128px); /* space above and below each section */
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme='modern'] {
+    --color-bg: #090c13;
+    --color-surface: #121722;
+    --color-text: #f2f5fa;
+    --color-muted: #9aa4b8;
+    --color-accent: #7aa2ff;
+    --color-accent-text: #06102a;
+    --color-border: #232a3a;
+    color-scheme: dark;
+  }
+}
+
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/geist.woff2') format('woff2');
+}
+
+/* ==========================================================================
+   What this design does differently from the shared layout (src/styles.css)
+   ========================================================================== */
+[data-theme='modern'] h1,
+[data-theme='modern'] h2,
+[data-theme='modern'] h3 {
+  letter-spacing: -0.035em;
+}
+
+[data-theme='modern'] h1 {
+  font-size: clamp(2.6rem, 6.6vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+[data-theme='modern'] h2 {
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+}
+
+[data-theme='modern'] .eyebrow {
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+}
+
+[data-theme='modern'] .button {
+  padding: 13px 22px;
+}
+
+[data-theme='modern'] .text-link {
+  border-bottom: 0;
+}
+
+/* Header: a dot before the name, and the last menu link as a button. */
+[data-theme='modern'] .header-row {
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+[data-theme='modern'] .brand {
+  font-weight: 650;
+  font-size: 1.15rem;
+  letter-spacing: -0.03em;
+}
+
+[data-theme='modern'] .brand::before {
+  content: '';
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  margin-right: 0.5em;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+[data-theme='modern'] .site-header nav {
+  align-items: center;
+  gap: 4px 26px;
+}
+
+[data-theme='modern'] .site-header nav a:last-child {
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+/* Hero: centered words above a wide picture. */
+[data-theme='modern'] .hero {
+  padding-top: clamp(48px, 8vw, 104px);
+}
+
+[data-theme='modern'] .hero-grid {
+  grid-template-columns: 1fr;
+  gap: clamp(48px, 7vw, 88px);
+}
+
+[data-theme='modern'] .hero-text {
+  text-align: center;
+  max-width: 54rem;
+  margin: 0 auto;
+}
+
+[data-theme='modern'] .hero .eyebrow {
+  display: inline-block;
+  padding: 7px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+}
+
+[data-theme='modern'] .hero h1 em {
+  font-style: normal;
+  font-weight: inherit;
+}
+
+[data-theme='modern'] .hero .lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[data-theme='modern'] .actions {
+  justify-content: center;
+  margin-top: 36px;
+}
+
+[data-theme='modern'] .hero-art {
+  border-radius: calc(var(--radius) * 2);
+}
+
+[data-theme='modern'] .art-soft {
+  fill: color-mix(in srgb, var(--color-accent) 22%, var(--color-surface));
+}
+
+/* Sections: the label sits above the heading, with no lines between. */
+[data-theme='modern'] .split {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+[data-theme='modern'] .split > .eyebrow {
+  padding-top: 0;
+}
+
+[data-theme='modern'] .about,
+[data-theme='modern'] .services {
+  border-top: 0;
+}
+
+[data-theme='modern'] .about {
+  padding-top: 0;
+}
+
+[data-theme='modern'] .statement {
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  font-weight: 500;
+  line-height: 1.16;
+  max-width: 26em;
+}
+
+/* Services: three columns side by side. */
+[data-theme='modern'] .services {
+  background: var(--color-surface);
+}
+
+[data-theme='modern'] .service-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 32px;
+}
+
+[data-theme='modern'] .service,
+[data-theme='modern'] .service:last-child {
+  display: block;
+  padding: 20px 0 0;
+  border-top: 2px solid var(--color-text);
+  border-bottom: 0;
+}
+
+[data-theme='modern'] .service h3 {
+  font-size: 1.4rem;
+  margin: 44px 0 10px;
+}
+
+/* Quote: left aligned, with a blue bar. */
+[data-theme='modern'] .quote {
+  background: none;
+}
+
+[data-theme='modern'] .quote figure {
+  max-width: none;
+  text-align: left;
+  padding-left: clamp(20px, 4vw, 48px);
+  border-left: 3px solid var(--color-accent);
+}
+
+[data-theme='modern'] .quote blockquote::before {
+  content: none;
+}
+
+[data-theme='modern'] .quote blockquote p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+  letter-spacing: -0.03em;
+  max-width: 24em;
+}
+
+/* Contact: a blue band. */
+[data-theme='modern'] .contact {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+[data-theme='modern'] .contact .eyebrow,
+[data-theme='modern'] .contact .lede,
+[data-theme='modern'] .contact dt {
+  opacity: 0.8;
+}
+
+[data-theme='modern'] .contact h2 {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  letter-spacing: -0.045em;
+}
+
+[data-theme='modern'] .contact-email {
+  font-weight: 500;
+  font-size: clamp(1.3rem, 3.2vw, 2rem);
+  letter-spacing: -0.03em;
+}
+
+/* Narrow windows and phones. */
+@media (max-width: 1024px) {
+  [data-theme='modern'] .service-list {
+    grid-template-columns: 1fr;
+  }
+
+  [data-theme='modern'] .service h3 {
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  [data-theme='modern'] .hero-art {
+    aspect-ratio: 3 / 2;
+  }
+}

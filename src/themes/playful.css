@@ -1,0 +1,362 @@
+/* ==========================================================================
+   PLAYFUL: bright blocks of color, thick outlines and sticker shapes.
+   Fits a toy shop, a party, a kids club, a festival, a fun side project.
+
+   THE LOOK. Change the values in this block and the whole site follows.
+   ========================================================================== */
+:root[data-theme='playful'] {
+  /* Colors (light). The dark set is just below: change both together. */
+  --color-bg: #fffcf2; /* page background */
+  --color-surface: #fff0b8; /* tinted panels and bands */
+  --color-text: #17130f; /* headings and body text */
+  --color-muted: #4f483f; /* secondary text */
+  --color-accent: #ff5fa2; /* buttons, links, highlights (pink) */
+  --color-accent-text: #17130f; /* text on top of the bright colors */
+  --color-border: #17130f; /* outlines and hard shadows */
+  --color-second: #ffd43b; /* a second bright color (yellow) */
+  --color-third: #6cb4ff; /* a third bright color (blue) */
+  --color-fourth: #4fd69c; /* a fourth bright color (green) */
+
+  /* Fonts. Geist is bundled in src/fonts/, so it works offline. */
+  --font-heading: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --heading-weight: 800; /* 700 is lighter, 900 is heavier */
+
+  /* Shape and spacing. */
+  --radius: 18px; /* corners of buttons, cards and pictures */
+  --container: 1160px; /* widest the content gets */
+  --space: clamp(20px, 5vw, 48px); /* space at the left and right edges */
+  --section: clamp(56px, 8vw, 112px); /* space above and below each section */
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme='playful'] {
+    --color-bg: #1b1713;
+    --color-surface: #2a241d;
+    --color-text: #fffcf2;
+    --color-muted: #d1c8ba;
+    --color-border: #000000;
+    color-scheme: dark;
+  }
+}
+
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/geist.woff2') format('woff2');
+}
+
+/* ==========================================================================
+   What this design does differently from the shared layout (src/styles.css)
+   ========================================================================== */
+[data-theme='playful'] body {
+  font-size: 18px;
+  font-weight: 500;
+  overflow-x: clip;
+}
+
+[data-theme='playful'] h1,
+[data-theme='playful'] h2,
+[data-theme='playful'] h3 {
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+[data-theme='playful'] h1 {
+  font-size: clamp(2.8rem, 7.4vw, 6rem);
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+}
+
+[data-theme='playful'] h2 {
+  font-size: clamp(2.2rem, 5.4vw, 4rem);
+}
+
+/* Labels are small black tags. */
+[data-theme='playful'] .eyebrow {
+  display: inline-block;
+  justify-self: start;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--color-border);
+  color: #fffcf2;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transform: rotate(-2deg);
+}
+
+/* Buttons: an outline and a hard shadow that presses in on hover. */
+[data-theme='playful'] .button {
+  padding: 15px 26px;
+  border: 3px solid var(--color-border);
+  box-shadow: 5px 5px 0 var(--color-border);
+  font-weight: 800;
+  font-size: 1.05rem;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+[data-theme='playful'] .button:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--color-border);
+}
+
+[data-theme='playful'] .text-link {
+  font-weight: 800;
+  font-size: 1.05rem;
+  border-bottom-width: 3px;
+}
+
+/* Header: the name is a black pill. */
+[data-theme='playful'] .header-row {
+  align-items: center;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+[data-theme='playful'] .brand {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--color-border);
+  color: #fffcf2;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.03em;
+}
+
+[data-theme='playful'] .site-header nav a,
+[data-theme='playful'] .site-footer nav a {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+[data-theme='playful'] .site-header nav a:hover,
+[data-theme='playful'] .site-footer nav a:hover {
+  color: inherit;
+  text-decoration: underline wavy var(--color-accent) 2px;
+}
+
+/* Hero: the highlighted word is a sticker. */
+[data-theme='playful'] .hero {
+  padding-top: clamp(24px, 4vw, 56px);
+}
+
+[data-theme='playful'] .hero-grid {
+  grid-template-columns: 6fr 5fr;
+}
+
+[data-theme='playful'] .hero h1 em {
+  display: inline-block;
+  padding: 0 0.18em 0.06em;
+  border: 3px solid var(--color-border);
+  border-radius: 0.22em;
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  font-style: normal;
+  font-weight: inherit;
+  transform: rotate(-3deg);
+}
+
+[data-theme='playful'] .hero-art {
+  border-radius: 0;
+  overflow: visible;
+}
+
+[data-theme='playful'] .hero-art > * {
+  stroke: var(--color-border);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+
+[data-theme='playful'] .art-ink {
+  fill: #17130f;
+  stroke: none;
+}
+
+[data-theme='playful'] .art-fourth {
+  fill: var(--color-fourth);
+}
+
+[data-theme='playful'] .art-smile {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
+/* Sections: each one is a band of color with a thick line above. */
+[data-theme='playful'] .split {
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+[data-theme='playful'] .split > .eyebrow {
+  padding-top: 6px;
+}
+
+[data-theme='playful'] .about,
+[data-theme='playful'] .services,
+[data-theme='playful'] .quote,
+[data-theme='playful'] .contact {
+  border-top: 3px solid var(--color-border);
+}
+
+[data-theme='playful'] .about {
+  background: var(--color-second);
+  color: var(--color-accent-text);
+}
+
+[data-theme='playful'] .about-text {
+  color: inherit;
+}
+
+[data-theme='playful'] .statement {
+  font-size: clamp(1.7rem, 3.8vw, 3rem);
+  font-weight: 700;
+  line-height: 1.08;
+  max-width: 22em;
+}
+
+/* Services: three cards, each a different color. */
+[data-theme='playful'] .service-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+[data-theme='playful'] .service,
+[data-theme='playful'] .service:last-child {
+  display: block;
+  padding: 26px;
+  border: 3px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 7px 7px 0 var(--color-border);
+  background: var(--color-third);
+  color: var(--color-accent-text);
+}
+
+[data-theme='playful'] .service:nth-child(3n + 2) {
+  background: var(--color-accent);
+}
+
+[data-theme='playful'] .service:nth-child(3n + 3) {
+  background: var(--color-fourth);
+}
+
+[data-theme='playful'] .service-number {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 3px solid var(--color-border);
+  border-radius: 999px;
+  background: #fffcf2;
+  color: #17130f;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+[data-theme='playful'] .service h3 {
+  font-size: 1.65rem;
+  margin: 36px 0 10px;
+}
+
+[data-theme='playful'] .service p {
+  color: inherit;
+}
+
+/* Quote: a blue band. */
+[data-theme='playful'] .quote {
+  background: var(--color-third);
+  color: var(--color-accent-text);
+}
+
+[data-theme='playful'] .quote blockquote::before {
+  color: inherit;
+  font-weight: 800;
+}
+
+[data-theme='playful'] .quote blockquote p {
+  font-style: normal;
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3.8vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+[data-theme='playful'] .quote figcaption span {
+  color: inherit;
+}
+
+/* Contact: a pink band. */
+[data-theme='playful'] .contact {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  border-bottom: 3px solid var(--color-border);
+}
+
+[data-theme='playful'] section.contact .eyebrow {
+  color: #fffcf2;
+}
+
+[data-theme='playful'] section.contact .eyebrow,
+[data-theme='playful'] .contact .lede,
+[data-theme='playful'] .contact dt {
+  opacity: 1;
+}
+
+[data-theme='playful'] .contact h2 {
+  font-size: clamp(3rem, 9vw, 7rem);
+  letter-spacing: -0.06em;
+}
+
+[data-theme='playful'] .contact-email {
+  font-weight: 800;
+  font-size: clamp(1.3rem, 3.6vw, 2.4rem);
+  letter-spacing: -0.04em;
+  text-decoration-thickness: 3px;
+}
+
+[data-theme='playful'] .contact-details > div {
+  border-top: 3px solid var(--color-border);
+}
+
+[data-theme='playful'] .footer-note {
+  border-top: 0;
+  padding-top: 0;
+}
+
+/* Wide windows: tilt the cards a little. */
+@media (min-width: 1025px) {
+  [data-theme='playful'] .service:nth-child(odd) {
+    transform: rotate(-1.2deg);
+  }
+
+  [data-theme='playful'] .service:nth-child(even) {
+    transform: rotate(1.2deg);
+  }
+}
+
+/* Narrow windows and phones. */
+@media (max-width: 1024px) {
+  [data-theme='playful'] .service-list {
+    grid-template-columns: 1fr;
+  }
+
+  [data-theme='playful'] .service h3 {
+    margin-top: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  [data-theme='playful'] .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  [data-theme='playful'] .hero-art {
+    aspect-ratio: auto;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}

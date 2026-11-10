@@ -1,0 +1,224 @@
+/* ==========================================================================
+   NATURAL: earthy and calm. Sand, moss green and clay, soft arches and a
+   warm, sturdy serif.
+   Fits a garden, a farm, a florist, a yoga studio, a clinic, a cabin.
+
+   THE LOOK. Change the values in this block and the whole site follows.
+   ========================================================================== */
+:root[data-theme='natural'] {
+  /* Colors (light). The dark set is just below: change both together. */
+  --color-bg: #f3efe3; /* page background */
+  --color-surface: #e6e4d2; /* tinted panels and bands */
+  --color-text: #223022; /* headings and body text */
+  --color-muted: #586655; /* secondary text */
+  --color-accent: #3e6939; /* buttons, links, highlights (moss green) */
+  --color-accent-text: #f6f3e7; /* text on top of the accent color */
+  --color-border: #cfd0ba; /* thin lines */
+  --color-second: #c57546; /* a second color (clay) */
+  --color-third: #ead9ae; /* a third color (wheat) */
+
+  /* Fonts. Young Serif is bundled in src/fonts/, so it works offline. */
+  --font-heading: 'Young Serif', 'Iowan Old Style', Palatino, Georgia, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --heading-weight: 400; /* Young Serif has one weight */
+
+  /* Shape and spacing. */
+  --radius: 20px; /* corners of cards and pictures; buttons are pills here */
+  --container: 1140px; /* widest the content gets */
+  --space: clamp(20px, 5vw, 48px); /* space at the left and right edges */
+  --section: clamp(64px, 9vw, 128px); /* space above and below each section */
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme='natural'] {
+    --color-bg: #161f18;
+    --color-surface: #202c22;
+    --color-text: #e9eedd;
+    --color-muted: #a6b4a1;
+    --color-accent: #9fc88d;
+    --color-accent-text: #10200f;
+    --color-border: #34432f;
+    --color-second: #d38d66;
+    --color-third: #4c4a2c;
+    color-scheme: dark;
+  }
+}
+
+@font-face {
+  font-family: 'Young Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/young-serif.woff2') format('woff2');
+}
+
+/* ==========================================================================
+   What this design does differently from the shared layout (src/styles.css)
+   ========================================================================== */
+[data-theme='natural'] h1,
+[data-theme='natural'] h2,
+[data-theme='natural'] h3 {
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+[data-theme='natural'] h1 {
+  font-size: clamp(2.5rem, 5.8vw, 4.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+[data-theme='natural'] h2 {
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+}
+
+[data-theme='natural'] .eyebrow {
+  color: var(--color-second);
+  letter-spacing: 0.14em;
+}
+
+[data-theme='natural'] .button {
+  border-radius: 999px;
+  padding: 15px 30px;
+}
+
+/* Header. */
+[data-theme='natural'] .brand {
+  font-weight: 400;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+}
+
+/* Hero: the picture is an arched window, on the left. */
+[data-theme='natural'] .hero {
+  padding-top: clamp(24px, 4vw, 48px);
+}
+
+[data-theme='natural'] .hero-grid {
+  grid-template-columns: 5fr 7fr;
+}
+
+[data-theme='natural'] .hero-art {
+  order: -1;
+  border-radius: 999px 999px var(--radius) var(--radius);
+}
+
+[data-theme='natural'] .hero h1 em {
+  font-style: normal;
+  font-weight: inherit;
+  color: var(--color-second);
+}
+
+[data-theme='natural'] .art-soft {
+  fill: color-mix(in srgb, var(--color-accent) 45%, var(--color-third));
+}
+
+[data-theme='natural'] .art-ink {
+  fill: color-mix(in srgb, var(--color-accent) 60%, #0c1a0c);
+}
+
+[data-theme='natural'] .art-stem {
+  fill: var(--color-third);
+  stroke: var(--color-third);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+/* About: a green band with rounded corners. */
+[data-theme='natural'] .about {
+  border-top: 0;
+  margin: 0 clamp(8px, 2vw, 24px);
+  border-radius: calc(var(--radius) * 2);
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+[data-theme='natural'] .about .eyebrow,
+[data-theme='natural'] .about-text {
+  color: inherit;
+  opacity: 0.85;
+}
+
+[data-theme='natural'] .statement {
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  line-height: 1.2;
+}
+
+/* Services: leaf-shaped numbers. */
+[data-theme='natural'] .services {
+  border-top: 0;
+}
+
+[data-theme='natural'] .service {
+  grid-template-columns: 4.5rem 5fr 6fr;
+  align-items: center;
+}
+
+[data-theme='natural'] .service-number {
+  display: grid;
+  place-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 0 50% 0 50%;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 0.86rem;
+  letter-spacing: 0.04em;
+}
+
+[data-theme='natural'] .service h3 {
+  font-size: clamp(1.3rem, 2.3vw, 1.65rem);
+}
+
+/* Quote. */
+[data-theme='natural'] .quote blockquote::before {
+  color: var(--color-second);
+}
+
+[data-theme='natural'] .quote blockquote p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+  line-height: 1.28;
+}
+
+/* Contact: rounded at the top. */
+[data-theme='natural'] .contact {
+  border-radius: calc(var(--radius) * 2) calc(var(--radius) * 2) 0 0;
+}
+
+[data-theme='natural'] .contact h2 {
+  font-size: clamp(2.6rem, 7vw, 5.25rem);
+  letter-spacing: -0.02em;
+}
+
+[data-theme='natural'] .quote {
+  padding-bottom: calc(var(--section) + var(--radius) * 2);
+  margin-bottom: calc(var(--radius) * -2);
+}
+
+/* Narrow windows and phones. */
+@media (max-width: 1024px) {
+  [data-theme='natural'] .service {
+    grid-template-columns: 4.5rem 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  [data-theme='natural'] .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  [data-theme='natural'] .hero-art {
+    order: 0;
+    aspect-ratio: 4 / 5;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  [data-theme='natural'] .service {
+    grid-template-columns: 1fr;
+  }
+}

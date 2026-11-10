@@ -1,0 +1,358 @@
+/* ==========================================================================
+   FRIENDLY: soft, round and warm, with pastel colors and a cheerful font.
+   Fits a bakery, a preschool, a pet sitter, a club, a community group.
+
+   THE LOOK. Change the values in this block and the whole site follows.
+   ========================================================================== */
+:root[data-theme='friendly'] {
+  /* Colors (light). The dark set is just below: change both together. */
+  --color-bg: #fff8ee; /* page background */
+  --color-surface: #ffe7d3; /* tinted panels and bands */
+  --color-text: #3b2a24; /* headings and body text */
+  --color-muted: #755d53; /* secondary text */
+  --color-accent: #c8432c; /* buttons, links, highlights */
+  --color-accent-text: #ffffff; /* text on top of the accent color */
+  --color-border: #f0d6bf; /* thin lines */
+  --color-second: #c9e7d6; /* a second soft color (mint) */
+  --color-third: #ffdd8f; /* a third soft color (butter) */
+
+  /* Fonts. Fredoka and Nunito are bundled in src/fonts/, so they work offline. */
+  --font-heading: 'Fredoka', ui-rounded, 'Arial Rounded MT Bold', 'Trebuchet MS', sans-serif;
+  --font-body: 'Nunito', ui-rounded, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --heading-weight: 600; /* 500 is lighter, 700 is heavier */
+
+  /* Shape and spacing. */
+  --radius: 28px; /* corners of cards and pictures; buttons are always pills here */
+  --container: 1120px; /* widest the content gets */
+  --space: clamp(20px, 5vw, 48px); /* space at the left and right edges */
+  --section: clamp(56px, 8vw, 112px); /* space above and below each section */
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme='friendly'] {
+    --color-bg: #271c19;
+    --color-surface: #3a2a25;
+    --color-text: #fdeee0;
+    --color-muted: #d0b8aa;
+    --color-accent: #ff9c84;
+    --color-accent-text: #3a1108;
+    --color-border: #4d3a33;
+    --color-second: #3f6b58;
+    --color-third: #8a6420;
+    color-scheme: dark;
+  }
+}
+
+@font-face {
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../fonts/fredoka.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 200 1000;
+  font-display: swap;
+  src: url('../fonts/nunito.woff2') format('woff2');
+}
+
+/* ==========================================================================
+   What this design does differently from the shared layout (src/styles.css)
+   ========================================================================== */
+[data-theme='friendly'] body {
+  font-size: 18px;
+}
+
+[data-theme='friendly'] h1,
+[data-theme='friendly'] h2,
+[data-theme='friendly'] h3 {
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+[data-theme='friendly'] h1 {
+  font-size: clamp(2.6rem, 6.4vw, 4.75rem);
+  line-height: 1.04;
+}
+
+[data-theme='friendly'] h2 {
+  font-size: clamp(2rem, 4.4vw, 3rem);
+}
+
+/* Labels are little colored tags. */
+[data-theme='friendly'] .eyebrow {
+  display: inline-block;
+  justify-self: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--color-third);
+  color: var(--color-text);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+[data-theme='friendly'] .button {
+  padding: 16px 30px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+[data-theme='friendly'] .button:hover {
+  transform: translateY(-2px) rotate(-1.5deg);
+}
+
+[data-theme='friendly'] .text-link {
+  font-weight: 800;
+  font-size: 1.05rem;
+  border-bottom-width: 2px;
+}
+
+/* Header: the menu links are pills. */
+[data-theme='friendly'] .header-row {
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+[data-theme='friendly'] .brand {
+  font-weight: 600;
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+}
+
+[data-theme='friendly'] .site-header nav {
+  gap: 6px;
+}
+
+[data-theme='friendly'] .site-header nav a {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+[data-theme='friendly'] .site-header nav a:hover {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+[data-theme='friendly'] .site-footer nav a {
+  font-weight: 700;
+}
+
+/* Hero: the picture has no frame. */
+[data-theme='friendly'] .hero {
+  padding-top: clamp(24px, 4vw, 56px);
+}
+
+[data-theme='friendly'] .hero-grid {
+  grid-template-columns: 6fr 5fr;
+}
+
+[data-theme='friendly'] .hero-art {
+  border-radius: 0;
+  overflow: visible;
+}
+
+/* The highlighted word gets a marker stroke under it. */
+[data-theme='friendly'] .hero h1 em {
+  font-style: normal;
+  font-weight: inherit;
+  color: inherit;
+  background: linear-gradient(transparent 62%, var(--color-third) 62%, var(--color-third) 92%, transparent 92%);
+}
+
+/* Sections: centered headings, no lines. */
+[data-theme='friendly'] .split {
+  grid-template-columns: 1fr;
+  gap: 20px;
+  text-align: center;
+}
+
+[data-theme='friendly'] .split > .eyebrow {
+  padding-top: 6px;
+}
+
+[data-theme='friendly'] .about,
+[data-theme='friendly'] .services {
+  border-top: 0;
+}
+
+[data-theme='friendly'] .about {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  margin: 0 var(--space);
+}
+
+[data-theme='friendly'] .statement {
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  line-height: 1.22;
+  margin: 0 auto;
+}
+
+[data-theme='friendly'] .about-text {
+  grid-template-columns: 1fr;
+  gap: 14px;
+  max-width: 36em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Services: three soft cards. */
+[data-theme='friendly'] .service-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  text-align: left;
+}
+
+[data-theme='friendly'] .service,
+[data-theme='friendly'] .service:last-child {
+  display: block;
+  padding: 28px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+[data-theme='friendly'] .service:nth-child(3n + 2) {
+  background: var(--color-second);
+}
+
+[data-theme='friendly'] .service:nth-child(3n + 3) {
+  background: var(--color-third);
+}
+
+[data-theme='friendly'] .service-number {
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 50%;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  letter-spacing: 0;
+}
+
+[data-theme='friendly'] .service h3 {
+  font-size: 1.5rem;
+  margin: 28px 0 8px;
+}
+
+[data-theme='friendly'] .service p {
+  color: var(--color-text);
+}
+
+/* Quote: a speech bubble. */
+[data-theme='friendly'] .quote {
+  background: none;
+  padding-top: 0;
+}
+
+[data-theme='friendly'] .quote figure {
+  max-width: 46rem;
+}
+
+[data-theme='friendly'] .quote blockquote {
+  position: relative;
+  padding: clamp(28px, 5vw, 52px);
+  border-radius: var(--radius);
+  background: var(--color-second);
+}
+
+[data-theme='friendly'] .quote blockquote::before {
+  content: none;
+}
+
+[data-theme='friendly'] .quote blockquote::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  width: 30px;
+  height: 30px;
+  margin-left: -15px;
+  border-radius: 6px;
+  background: var(--color-second);
+  transform: rotate(45deg);
+}
+
+[data-theme='friendly'] .quote blockquote p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+}
+
+/* Contact: a rounded panel in the accent color. */
+[data-theme='friendly'] .contact {
+  background: none;
+  color: var(--color-accent-text);
+  padding: 0 var(--space) clamp(24px, 4vw, 48px);
+}
+
+[data-theme='friendly'] .contact-grid {
+  padding: clamp(36px, 7vw, 88px) clamp(24px, 6vw, 80px);
+  border-radius: var(--radius);
+  background: var(--color-accent);
+}
+
+[data-theme='friendly'] .contact .eyebrow {
+  opacity: 1;
+  background: var(--color-accent-text);
+  color: var(--color-accent);
+}
+
+[data-theme='friendly'] .contact .lede,
+[data-theme='friendly'] .contact dt {
+  opacity: 0.9;
+}
+
+[data-theme='friendly'] .contact h2 {
+  font-size: clamp(2.6rem, 6.4vw, 4.75rem);
+  letter-spacing: -0.01em;
+}
+
+[data-theme='friendly'] .contact-email {
+  font-weight: 500;
+  text-decoration-thickness: 2px;
+}
+
+[data-theme='friendly'] .footer-note {
+  border-top: 0;
+  padding-top: 0;
+}
+
+/* Narrow windows and phones. */
+@media (max-width: 1024px) {
+  [data-theme='friendly'] .service-list {
+    grid-template-columns: 1fr;
+  }
+
+  [data-theme='friendly'] .service h3 {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  [data-theme='friendly'] .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  [data-theme='friendly'] .hero-art {
+    aspect-ratio: auto;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}

@@ -1,60 +1,10 @@
 /* ==========================================================================
-   THE LOOK. Change the values in this block and the whole site follows.
-   Everything below it is layout and rarely needs touching.
+   The shared layout, used by every design.
+
+   The look itself (colors, fonts, corners, spacing) is not here: it is the
+   design picked by `theme` in src/site.ts, and each design is one file in
+   src/themes/. Change a color or a font there.
    ========================================================================== */
-:root {
-  /* Colors (light). The dark set is just below: change both together. */
-  --color-bg: #f6f2ea; /* page background */
-  --color-surface: #ece6da; /* tinted panels and bands */
-  --color-text: #1d1b16; /* headings and body text */
-  --color-muted: #686256; /* secondary text */
-  --color-accent: #b4451f; /* buttons, links, highlights */
-  --color-accent-text: #ffffff; /* text on top of the accent color */
-  --color-border: #d9d1c1; /* thin lines */
-
-  /* Fonts. Fraunces is bundled in src/fonts/, so it works offline. */
-  --font-heading: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
-  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --heading-weight: 400; /* 300 is delicate, 600 is bold */
-
-  /* Shape and spacing. */
-  --radius: 4px; /* corners of buttons and pictures; 999px makes pills */
-  --container: 1180px; /* widest the content gets */
-  --space: clamp(20px, 5vw, 48px); /* space at the left and right edges */
-  --section: clamp(72px, 11vw, 152px); /* space above and below each section */
-
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #161512;
-    --color-surface: #211f1b;
-    --color-text: #f1ece1;
-    --color-muted: #a8a193;
-    --color-accent: #ec8a5e;
-    --color-accent-text: #1b1206;
-    --color-border: #36332c;
-    color-scheme: dark;
-  }
-}
-
-/* The heading font, bundled with the site (upright and italic). */
-@font-face {
-  font-family: 'Fraunces';
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('./fonts/fraunces.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Fraunces';
-  font-style: italic;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url('./fonts/fraunces-italic.woff2') format('woff2');
-}
 
 /* ==========================================================================
    Basics
@@ -320,6 +270,26 @@ a {
   fill: var(--color-border);
 }
 
+/* Extra colors some designs have (see src/themes/friendly.css). */
+.art-second {
+  fill: var(--color-second, var(--color-surface));
+}
+
+.art-third {
+  fill: var(--color-third, var(--color-border));
+}
+
+.art-fourth {
+  fill: var(--color-fourth, var(--color-accent));
+}
+
+.art-squiggle {
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 6;
+  stroke-linecap: round;
+}
+
 .art-line {
   fill: none;
   stroke: var(--color-text);
@@ -451,7 +421,7 @@ a {
   color: var(--color-bg);
 }
 
-.contact .eyebrow,
+section.contact .eyebrow,
 .contact .lede,
 .contact dt {
   color: inherit;

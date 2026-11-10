@@ -1,6 +1,6 @@
 # Mux Bot website template
 
-A small website to start from: Vite, React and TypeScript with plain CSS. One page with a hero, an about section, a list of services, a quote, a contact section and a footer, laid out for phones, tablets and desktops, in light and dark.
+A small website to start from: Vite, React and TypeScript with plain CSS. One page with a hero, an about section, a list of services, a quote, a contact section and a footer, laid out for phones, tablets and desktops, in light and dark, and in ten designs to choose from.
 
 ## How Mux Bot uses it
 
@@ -26,8 +26,14 @@ Open http://127.0.0.1:5173. `npm run build` checks the types and builds the site
 
 - `src/pages/`: one file per page; `src/App.tsx` maps paths to pages and `src/site.ts` holds the site's name, email address and menu.
 - `src/components/`: the header, footer and page sections, one file each.
-- `src/styles.css`: the look. Colors, fonts, corners and spacing are the variables at the top.
-- `src/fonts/`: the heading font (Fraunces, SIL Open Font License), bundled so the site needs no network.
+- `src/site.ts` also picks the design: the one word `theme`.
+- `src/themes/`: the ten designs, one CSS file each, and `index.ts`, the list of them with an `active` flag. A design's colors, fonts, corners and spacing are the variables at the top of its file.
+- `src/styles.css`: the layout every design shares.
+- `src/fonts/`: the bundled fonts (all under the SIL Open Font License, each with its license file), so the site needs no network.
+
+## Designs
+
+`editorial` (the default), `modern`, `bold`, `friendly`, `minimal`, `luxe`, `retro`, `natural`, `terminal` and `playful`. Change `theme` in `src/site.ts` to switch. Each has a light and a dark set of colors, except `bold`, which is always dark. To take a design off the list of choices, set its `active` to `false` in `src/themes/index.ts`, and remove its line from the list in `PLAYBOOK.md`.
 
 ## License
 

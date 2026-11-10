@@ -1,0 +1,376 @@
+/* ==========================================================================
+   TERMINAL: typewriter type on a faint grid, like a technical drawing.
+   Fits a developer, a tool, an open source project, a tech meetup.
+
+   THE LOOK. Change the values in this block and the whole site follows.
+   ========================================================================== */
+:root[data-theme='terminal'] {
+  /* Colors (light). The dark set is just below: change both together. */
+  --color-bg: #f3f4ef; /* page background */
+  --color-surface: #e8eae3; /* tinted panels and bands */
+  --color-text: #14191a; /* headings and body text */
+  --color-muted: #586266; /* secondary text */
+  --color-accent: #08774a; /* buttons, links, highlights (green) */
+  --color-accent-text: #ffffff; /* text on top of the accent color */
+  --color-border: #c4c9c0; /* thin lines and the grid */
+
+  /* Fonts. Geist Mono is bundled in src/fonts/, so it works offline. */
+  --font-heading: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-body: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --heading-weight: 600; /* 500 is lighter, 700 is heavier */
+
+  /* Shape and spacing. */
+  --radius: 0px; /* corners of buttons and pictures; 999px makes pills */
+  --container: 1180px; /* widest the content gets */
+  --space: clamp(20px, 5vw, 48px); /* space at the left and right edges */
+  --section: clamp(56px, 8vw, 112px); /* space above and below each section */
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme='terminal'] {
+    --color-bg: #0a0e0d;
+    --color-surface: #111715;
+    --color-text: #d9e4dd;
+    --color-muted: #84948c;
+    --color-accent: #4af29b;
+    --color-accent-text: #04140c;
+    --color-border: #24312b;
+    color-scheme: dark;
+  }
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/geist-mono.woff2') format('woff2');
+}
+
+/* ==========================================================================
+   What this design does differently from the shared layout (src/styles.css)
+   ========================================================================== */
+/* The faint grid behind the whole page. */
+[data-theme='terminal'] body {
+  font-size: 15px;
+  line-height: 1.7;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-border) 40%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-border) 40%, transparent) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+[data-theme='terminal'] h1,
+[data-theme='terminal'] h2,
+[data-theme='terminal'] h3 {
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+[data-theme='terminal'] h1 {
+  font-size: clamp(2rem, 5.2vw, 4rem);
+  line-height: 1.06;
+  letter-spacing: -0.05em;
+}
+
+[data-theme='terminal'] h2 {
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+}
+
+[data-theme='terminal'] h3 {
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+/* Labels look like code comments. */
+[data-theme='terminal'] .eyebrow {
+  font-size: 0.86rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  color: var(--color-accent);
+}
+
+[data-theme='terminal'] .eyebrow::before {
+  content: '// ';
+}
+
+[data-theme='terminal'] .lede {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Buttons wear square brackets. */
+[data-theme='terminal'] .button,
+[data-theme='terminal'] .text-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+[data-theme='terminal'] .button {
+  padding: 12px 18px;
+}
+
+[data-theme='terminal'] .button::before {
+  content: '[ ';
+}
+
+[data-theme='terminal'] .button::after {
+  content: ' ]';
+}
+
+[data-theme='terminal'] .text-link {
+  border-bottom-style: dashed;
+}
+
+/* Header. */
+[data-theme='terminal'] .site-header {
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+[data-theme='terminal'] .header-row {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+[data-theme='terminal'] .brand {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+[data-theme='terminal'] .brand::before {
+  content: '~/';
+  color: var(--color-accent);
+}
+
+[data-theme='terminal'] .site-header nav a,
+[data-theme='terminal'] .site-footer nav a {
+  font-size: 0.88rem;
+  font-weight: 400;
+  text-transform: lowercase;
+}
+
+/* Hero: a blinking cursor after the headline, and a drawing beside it. */
+[data-theme='terminal'] .hero-grid {
+  grid-template-columns: 7fr 4fr;
+}
+
+[data-theme='terminal'] .hero h1 em {
+  font-style: normal;
+  font-weight: inherit;
+}
+
+[data-theme='terminal'] .hero h1::after {
+  content: '';
+  display: inline-block;
+  width: 0.5em;
+  height: 0.9em;
+  margin-left: 0.14em;
+  vertical-align: -0.06em;
+  background: var(--color-accent);
+  animation: terminal-blink 1.1s steps(1) infinite;
+}
+
+@keyframes terminal-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+[data-theme='terminal'] .art-accent {
+  fill: var(--color-accent);
+}
+
+[data-theme='terminal'] .art-dash {
+  fill: none;
+  stroke: var(--color-muted);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Sections: boxes drawn with thin lines. */
+[data-theme='terminal'] .about,
+[data-theme='terminal'] .services {
+  border-top: 1px solid var(--color-border);
+}
+
+[data-theme='terminal'] .about {
+  background: var(--color-bg);
+}
+
+[data-theme='terminal'] .split > .eyebrow {
+  padding-top: 0.5em;
+}
+
+[data-theme='terminal'] .statement {
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+}
+
+[data-theme='terminal'] .service-list {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+[data-theme='terminal'] .service,
+[data-theme='terminal'] .service:last-child {
+  padding: 20px;
+  border: 0;
+  border-top: 1px dashed var(--color-border);
+}
+
+[data-theme='terminal'] .service:first-child {
+  border-top: 0;
+}
+
+[data-theme='terminal'] .service-number {
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+[data-theme='terminal'] .service-number::after {
+  content: '.';
+}
+
+/* Quote: like a quoted line in a plain-text email. */
+[data-theme='terminal'] .quote {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+[data-theme='terminal'] .quote figure {
+  max-width: none;
+  text-align: left;
+}
+
+[data-theme='terminal'] .quote blockquote {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8em;
+}
+
+[data-theme='terminal'] .quote blockquote::before {
+  content: '>';
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+[data-theme='terminal'] .quote blockquote p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
+  line-height: 1.35;
+  letter-spacing: -0.04em;
+  text-wrap: pretty;
+  max-width: 28em;
+}
+
+[data-theme='terminal'] .quote figcaption {
+  margin-top: 24px;
+  font-size: 0.88rem;
+}
+
+[data-theme='terminal'] .quote figcaption strong {
+  display: inline;
+}
+
+[data-theme='terminal'] .quote figcaption strong::before {
+  content: '-- ';
+}
+
+[data-theme='terminal'] .quote figcaption strong::after {
+  content: ', ';
+  font-weight: 400;
+}
+
+/* Contact: the same page, not a dark band. */
+[data-theme='terminal'] .contact {
+  background: none;
+  color: inherit;
+}
+
+[data-theme='terminal'] section.contact .eyebrow,
+[data-theme='terminal'] .contact .lede,
+[data-theme='terminal'] .contact dt {
+  opacity: 1;
+}
+
+[data-theme='terminal'] section.contact .eyebrow {
+  color: var(--color-accent);
+}
+
+[data-theme='terminal'] .contact .lede,
+[data-theme='terminal'] .contact dt {
+  color: var(--color-muted);
+}
+
+[data-theme='terminal'] .contact h2 {
+  font-size: clamp(2rem, 5.2vw, 4rem);
+  letter-spacing: -0.05em;
+}
+
+[data-theme='terminal'] .contact-email {
+  font-size: clamp(1.05rem, 2.6vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--color-accent);
+  text-decoration-style: dashed;
+}
+
+[data-theme='terminal'] .contact-details {
+  padding: 20px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+[data-theme='terminal'] .contact-details > div {
+  padding-top: 0;
+  border-top: 0;
+}
+
+[data-theme='terminal'] .contact-details dt {
+  font-size: 0.86rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: lowercase;
+}
+
+[data-theme='terminal'] .contact-details dt::before {
+  content: '# ';
+}
+
+[data-theme='terminal'] .site-footer {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+[data-theme='terminal'] .footer-note {
+  border-top-style: dashed;
+}
+
+/* Narrow windows and phones. */
+@media (max-width: 640px) {
+  [data-theme='terminal'] .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  [data-theme='terminal'] .hero-art {
+    aspect-ratio: auto;
+    max-width: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme='terminal'] .hero h1::after {
+    animation: none;
+  }
+}
