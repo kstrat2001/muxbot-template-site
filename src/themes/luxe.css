@@ -1,0 +1,328 @@
+/* ==========================================================================
+   LUXE: elegant and airy, a fine high-contrast serif, everything centered.
+   Fits a salon, a jeweler, a hotel, a restaurant, a wedding.
+
+   THE LOOK. Change the values in this block and the whole site follows.
+   ========================================================================== */
+:root[data-theme='luxe'] {
+  /* Colors (light). The dark set is just below: change both together. */
+  --color-bg: #f9f6f0; /* page background */
+  --color-surface: #efe9de; /* tinted panels and bands */
+  --color-text: #1b1a17; /* headings and body text */
+  --color-muted: #6d675c; /* secondary text */
+  --color-accent: #7c5c2a; /* links and highlights (a bronze) */
+  --color-accent-text: #ffffff; /* text on top of the accent color */
+  --color-border: #d6cdbd; /* thin lines */
+
+  /* Fonts. Cormorant is bundled in src/fonts/, so it works offline. */
+  --font-heading: 'Cormorant', 'Didot', 'Bodoni 72', 'Times New Roman', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --heading-weight: 400; /* 300 is finer, 600 is stronger */
+
+  /* Shape and spacing. */
+  --radius: 0px; /* corners of buttons and pictures; 999px makes pills */
+  --container: 1120px; /* widest the content gets */
+  --space: clamp(20px, 5vw, 48px); /* space at the left and right edges */
+  --section: clamp(88px, 13vw, 184px); /* space above and below each section */
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme='luxe'] {
+    --color-bg: #100f0d;
+    --color-surface: #1a1815;
+    --color-text: #f1ece2;
+    --color-muted: #a8a092;
+    --color-accent: #d2b27a;
+    --color-accent-text: #1a1408;
+    --color-border: #35312a;
+    color-scheme: dark;
+  }
+}
+
+@font-face {
+  font-family: 'Cormorant';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../fonts/cormorant.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Cormorant';
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('../fonts/cormorant-italic.woff2') format('woff2');
+}
+
+/* ==========================================================================
+   What this design does differently from the shared layout (src/styles.css)
+   ========================================================================== */
+[data-theme='luxe'] body {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+[data-theme='luxe'] h1,
+[data-theme='luxe'] h2,
+[data-theme='luxe'] h3 {
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+}
+
+[data-theme='luxe'] h1 {
+  font-size: clamp(3.2rem, 9vw, 7.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+}
+
+[data-theme='luxe'] h2 {
+  font-size: clamp(2.4rem, 5.4vw, 4rem);
+}
+
+[data-theme='luxe'] .eyebrow {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  margin-right: -0.34em;
+}
+
+[data-theme='luxe'] .lede {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 30em;
+}
+
+/* Buttons are fine outlines with spaced capitals. */
+[data-theme='luxe'] .button,
+[data-theme='luxe'] .text-link {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+[data-theme='luxe'] .button {
+  padding: 18px 34px;
+  background: none;
+  color: var(--color-text);
+  border: 1px solid var(--color-text);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+[data-theme='luxe'] .button:hover {
+  transform: none;
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* Header: the name in spaced capitals. */
+[data-theme='luxe'] .header-row {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+[data-theme='luxe'] .brand {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+[data-theme='luxe'] .site-header nav a,
+[data-theme='luxe'] .site-footer nav a {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Hero: centered, with a row of arches under it. */
+[data-theme='luxe'] .hero {
+  padding-top: clamp(56px, 9vw, 128px);
+  padding-bottom: 0;
+}
+
+[data-theme='luxe'] .hero-grid {
+  grid-template-columns: 1fr;
+  gap: clamp(56px, 8vw, 104px);
+}
+
+[data-theme='luxe'] .hero-text {
+  text-align: center;
+}
+
+[data-theme='luxe'] .hero h1 {
+  margin-top: 0.34em;
+}
+
+[data-theme='luxe'] .hero h1 em {
+  font-weight: inherit;
+}
+
+[data-theme='luxe'] .hero .lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[data-theme='luxe'] .actions {
+  justify-content: center;
+}
+
+[data-theme='luxe'] .art-line {
+  stroke: var(--color-text);
+}
+
+/* Sections: centered, with plenty of air. */
+[data-theme='luxe'] .split {
+  grid-template-columns: 1fr;
+  gap: 28px;
+  text-align: center;
+}
+
+[data-theme='luxe'] .split > .eyebrow {
+  padding-top: 0;
+}
+
+[data-theme='luxe'] .about {
+  border-top: 0;
+}
+
+[data-theme='luxe'] .statement {
+  font-size: clamp(1.9rem, 4vw, 3.1rem);
+  line-height: 1.14;
+  max-width: 21em;
+  margin: 0 auto;
+}
+
+[data-theme='luxe'] .about-text {
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 34em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Services: three columns with fine lines between. */
+[data-theme='luxe'] .service-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+[data-theme='luxe'] .service,
+[data-theme='luxe'] .service:last-child {
+  display: block;
+  padding: 12px 32px;
+  border: 0;
+  border-left: 1px solid var(--color-border);
+}
+
+[data-theme='luxe'] .service:first-child {
+  border-left: 0;
+}
+
+[data-theme='luxe'] .service-number {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 0;
+}
+
+[data-theme='luxe'] .service h3 {
+  font-size: 1.9rem;
+  margin: 18px 0 14px;
+}
+
+/* Quote. */
+[data-theme='luxe'] .quote blockquote::before {
+  content: none;
+}
+
+[data-theme='luxe'] .quote blockquote p {
+  font-weight: 400;
+  font-size: clamp(1.9rem, 4.2vw, 3.2rem);
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+}
+
+[data-theme='luxe'] .quote figcaption {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+[data-theme='luxe'] .quote figcaption strong {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+/* Contact: centered. */
+[data-theme='luxe'] .contact-grid {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+}
+
+[data-theme='luxe'] .contact h2 {
+  font-size: clamp(3.2rem, 9vw, 7.5rem);
+  letter-spacing: -0.02em;
+}
+
+[data-theme='luxe'] .contact .lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+[data-theme='luxe'] .contact-email {
+  font-style: italic;
+  text-decoration: none;
+  border-bottom: 1px solid;
+  padding-bottom: 4px;
+}
+
+[data-theme='luxe'] .contact-details {
+  grid-template-columns: repeat(2, minmax(0, 15rem));
+  gap: 24px 48px;
+}
+
+[data-theme='luxe'] .contact-details dt {
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+}
+
+[data-theme='luxe'] .footer-row {
+  justify-content: center;
+  text-align: center;
+  gap: 18px 40px;
+}
+
+[data-theme='luxe'] .site-footer nav {
+  justify-content: center;
+}
+
+/* Narrow windows and phones. */
+@media (max-width: 1024px) {
+  [data-theme='luxe'] .service-list {
+    grid-template-columns: 1fr;
+  }
+
+  [data-theme='luxe'] .service,
+  [data-theme='luxe'] .service:last-child {
+    padding: 32px 0;
+    border-left: 0;
+    border-top: 1px solid var(--color-border);
+  }
+}
+
+@media (max-width: 640px) {
+  [data-theme='luxe'] .hero-art {
+    aspect-ratio: 5 / 3;
+  }
+
+  [data-theme='luxe'] .header-row {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,321 @@
+/* ==========================================================================
+   RETRO: seventies print. Cream paper, burnt orange, mustard and teal, with
+   a chunky slab for headings and heavy ink lines.
+   Fits a diner, a record shop, a barber, a brewery, a market stall.
+
+   THE LOOK. Change the values in this block and the whole site follows.
+   ========================================================================== */
+:root[data-theme='retro'] {
+  /* Colors (light). The dark set is just below: change both together. */
+  --color-bg: #f4e8cf; /* page background */
+  --color-surface: #ecdcb9; /* tinted panels and bands */
+  --color-text: #2a1c13; /* headings, body text and the heavy lines */
+  --color-muted: #6a5341; /* secondary text */
+  --color-accent: #bd4520; /* buttons, links, highlights (burnt orange) */
+  --color-accent-text: #fff6e3; /* text on top of the accent color */
+  --color-border: #2a1c13; /* lines (the same ink as the text) */
+  --color-second: #e2a52c; /* a second color (mustard) */
+  --color-third: #2c6e69; /* a third color (teal) */
+
+  /* Fonts. Alfa Slab One is bundled in src/fonts/, so it works offline. */
+  --font-heading: 'Alfa Slab One', Rockwell, 'Rockwell Extra Bold', Georgia, serif;
+  --font-body: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --heading-weight: 400; /* Alfa Slab One has one weight, and it is heavy */
+
+  /* Shape and spacing. */
+  --radius: 10px; /* corners of buttons and cards; 999px makes pills */
+  --container: 1140px; /* widest the content gets */
+  --space: clamp(20px, 5vw, 48px); /* space at the left and right edges */
+  --section: clamp(64px, 9vw, 120px); /* space above and below each section */
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme='retro'] {
+    --color-bg: #241812;
+    --color-surface: #33231a;
+    --color-text: #f4e8cf;
+    --color-muted: #cbb797;
+    --color-accent: #e8693a;
+    --color-accent-text: #241812;
+    --color-border: #f4e8cf;
+    --color-second: #e2a52c;
+    --color-third: #3f8d86;
+    color-scheme: dark;
+  }
+}
+
+@font-face {
+  font-family: 'Alfa Slab One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/alfa-slab-one.woff2') format('woff2');
+}
+
+/* ==========================================================================
+   What this design does differently from the shared layout (src/styles.css)
+   ========================================================================== */
+[data-theme='retro'] h1,
+[data-theme='retro'] h2,
+[data-theme='retro'] h3 {
+  letter-spacing: 0;
+  line-height: 1.06;
+}
+
+[data-theme='retro'] h1 {
+  font-size: clamp(2.5rem, 6.2vw, 5rem);
+  line-height: 1.02;
+}
+
+[data-theme='retro'] h2 {
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+}
+
+/* Labels: italic, with a star on each side. */
+[data-theme='retro'] .eyebrow {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--color-accent);
+}
+
+[data-theme='retro'] .eyebrow::before {
+  content: '\2605\00a0\00a0';
+  font-style: normal;
+}
+
+[data-theme='retro'] .eyebrow::after {
+  content: '\00a0\00a0\2605';
+  font-style: normal;
+}
+
+[data-theme='retro'] .hero .lede {
+  color: var(--color-text);
+}
+
+[data-theme='retro'] .button {
+  padding: 14px 28px;
+  border: 3px solid var(--color-border);
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+}
+
+[data-theme='retro'] .text-link {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.05rem;
+  border-bottom-width: 2px;
+}
+
+/* Header: three stripes under it. */
+[data-theme='retro'] .site-header {
+  border-bottom: 3px solid var(--color-border);
+}
+
+[data-theme='retro'] .site-header::after {
+  content: '';
+  display: block;
+  height: 18px;
+  background: linear-gradient(
+    var(--color-accent) 0 6px,
+    var(--color-second) 6px 12px,
+    var(--color-third) 12px 18px
+  );
+}
+
+[data-theme='retro'] .header-row {
+  align-items: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+[data-theme='retro'] .brand {
+  font-weight: 400;
+  font-size: 1.6rem;
+  letter-spacing: 0;
+}
+
+[data-theme='retro'] .site-header nav a,
+[data-theme='retro'] .site-footer nav a {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Hero: the picture sits in an arched frame. */
+[data-theme='retro'] .hero {
+  padding-top: clamp(40px, 6vw, 80px);
+}
+
+[data-theme='retro'] .hero-grid {
+  grid-template-columns: 3fr 2fr;
+}
+
+[data-theme='retro'] .hero h1 em {
+  font-style: normal;
+  font-weight: inherit;
+}
+
+[data-theme='retro'] .hero-art {
+  border: 3px solid var(--color-border);
+  border-radius: 999px 999px var(--radius) var(--radius);
+}
+
+/* Sections: heavy lines between. */
+[data-theme='retro'] .about,
+[data-theme='retro'] .services {
+  border-top: 3px solid var(--color-border);
+}
+
+[data-theme='retro'] .services {
+  background: var(--color-surface);
+}
+
+[data-theme='retro'] .statement {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.3;
+}
+
+[data-theme='retro'] .split > .eyebrow {
+  padding-top: 0.5em;
+}
+
+/* Services: a colored number disc on each row. */
+[data-theme='retro'] .service {
+  grid-template-columns: 4.5rem 5fr 6fr;
+  align-items: center;
+  border-top: 3px solid var(--color-border);
+}
+
+[data-theme='retro'] .service:last-child {
+  border-bottom: 3px solid var(--color-border);
+}
+
+[data-theme='retro'] .service-number {
+  display: grid;
+  place-items: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  border: 3px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-second);
+  color: #2a1c13;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+}
+
+[data-theme='retro'] .service:nth-child(3n + 2) .service-number {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+[data-theme='retro'] .service:nth-child(3n + 3) .service-number {
+  background: var(--color-third);
+  color: #fff6e3;
+}
+
+[data-theme='retro'] .service h3 {
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+}
+
+[data-theme='retro'] .service p {
+  color: var(--color-text);
+}
+
+/* Quote: a teal band. */
+[data-theme='retro'] .quote {
+  background: var(--color-third);
+  color: #fff6e3;
+  border-top: 3px solid var(--color-border);
+}
+
+[data-theme='retro'] .quote blockquote::before {
+  color: var(--color-second);
+}
+
+[data-theme='retro'] .quote blockquote p {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+[data-theme='retro'] .quote figcaption span {
+  color: inherit;
+  opacity: 0.85;
+}
+
+/* Contact: an orange band. */
+[data-theme='retro'] .contact {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  border-top: 3px solid var(--color-border);
+  border-bottom: 3px solid var(--color-border);
+}
+
+[data-theme='retro'] section.contact .eyebrow,
+[data-theme='retro'] .contact .lede,
+[data-theme='retro'] .contact dt {
+  opacity: 1;
+}
+
+[data-theme='retro'] .contact h2 {
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  letter-spacing: 0;
+}
+
+[data-theme='retro'] .contact-email {
+  font-size: clamp(1.15rem, 3.4vw, 2.1rem);
+  letter-spacing: 0;
+  text-decoration-thickness: 3px;
+}
+
+[data-theme='retro'] .contact-details dt {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+[data-theme='retro'] .contact-details > div {
+  border-top: 3px solid currentColor;
+}
+
+[data-theme='retro'] .footer-note {
+  border-top-width: 3px;
+}
+
+/* Narrow windows and phones. */
+@media (max-width: 1024px) {
+  [data-theme='retro'] .service {
+    grid-template-columns: 4.5rem 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  [data-theme='retro'] .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  [data-theme='retro'] .hero-art {
+    aspect-ratio: 5 / 6;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  [data-theme='retro'] .service {
+    grid-template-columns: 1fr;
+  }
+}

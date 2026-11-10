@@ -1,0 +1,311 @@
+/* ==========================================================================
+   MINIMAL: quiet black and white, small careful type and a lot of room.
+   Fits a portfolio, an architect, a lawyer, a freelancer, a personal page.
+
+   THE LOOK. Change the values in this block and the whole site follows.
+   ========================================================================== */
+:root[data-theme='minimal'] {
+  /* Colors (light). The dark set is just below: change both together. */
+  --color-bg: #ffffff; /* page background */
+  --color-surface: #f4f4f3; /* tinted panels and bands */
+  --color-text: #121212; /* headings and body text */
+  --color-muted: #6a6a68; /* secondary text */
+  --color-accent: #121212; /* buttons, links, highlights (black here; any color works) */
+  --color-accent-text: #ffffff; /* text on top of the accent color */
+  --color-border: #dededc; /* thin lines */
+
+  /* Fonts. Geist Mono, for the small labels, is bundled in src/fonts/. */
+  --font-heading: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Inter, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Inter, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-label: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --heading-weight: 500; /* 400 is lighter, 600 is heavier */
+
+  /* Shape and spacing. */
+  --radius: 0px; /* corners of buttons and pictures; 999px makes pills */
+  --container: 1200px; /* widest the content gets */
+  --space: clamp(20px, 5vw, 56px); /* space at the left and right edges */
+  --section: clamp(64px, 9vw, 120px); /* space above and below each section */
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme='minimal'] {
+    --color-bg: #0d0d0d;
+    --color-surface: #181818;
+    --color-text: #ededeb;
+    --color-muted: #969694;
+    --color-accent: #ededeb;
+    --color-accent-text: #0d0d0d;
+    --color-border: #2b2b2a;
+    color-scheme: dark;
+  }
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/geist-mono.woff2') format('woff2');
+}
+
+/* ==========================================================================
+   What this design does differently from the shared layout (src/styles.css)
+   ========================================================================== */
+[data-theme='minimal'] body {
+  font-size: 16px;
+}
+
+[data-theme='minimal'] h1,
+[data-theme='minimal'] h2,
+[data-theme='minimal'] h3 {
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+[data-theme='minimal'] h1 {
+  font-size: clamp(2.1rem, 5.2vw, 4.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+[data-theme='minimal'] h2 {
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+}
+
+[data-theme='minimal'] h3 {
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+}
+
+/* Small labels are set in a typewriter font. */
+[data-theme='minimal'] .eyebrow,
+[data-theme='minimal'] .service-number,
+[data-theme='minimal'] .contact-details dt,
+[data-theme='minimal'] .footer-note {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+[data-theme='minimal'] .lede {
+  font-size: 1.1rem;
+  max-width: 30em;
+}
+
+[data-theme='minimal'] .button {
+  padding: 12px 20px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+[data-theme='minimal'] .text-link {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Header. */
+[data-theme='minimal'] .site-header {
+  border-bottom: 1px solid var(--color-border);
+}
+
+[data-theme='minimal'] .header-row {
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+
+[data-theme='minimal'] .brand {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+[data-theme='minimal'] .site-header nav a,
+[data-theme='minimal'] .site-footer nav a {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+[data-theme='minimal'] .site-header nav a:hover,
+[data-theme='minimal'] .site-footer nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero: words only, set to the right of an empty column. */
+[data-theme='minimal'] .hero {
+  padding-top: clamp(64px, 12vw, 176px);
+}
+
+[data-theme='minimal'] .hero-grid {
+  grid-template-columns: 1fr 3fr;
+  gap: 24px 48px;
+  align-items: start;
+}
+
+[data-theme='minimal'] .hero-text {
+  display: contents;
+}
+
+[data-theme='minimal'] .hero-text > * {
+  grid-column: 2;
+}
+
+[data-theme='minimal'] .hero-text > .eyebrow {
+  grid-column: 1;
+  grid-row: 1;
+  padding-top: 1em;
+}
+
+[data-theme='minimal'] .hero h1 {
+  grid-row: 1;
+  margin-top: 0;
+  max-width: 13em;
+}
+
+[data-theme='minimal'] .hero h1 em {
+  font-style: normal;
+  font-weight: inherit;
+  color: var(--color-muted);
+}
+
+[data-theme='minimal'] .hero .lede {
+  margin-top: 8px;
+}
+
+[data-theme='minimal'] .actions {
+  margin-top: 16px;
+}
+
+/* Sections. */
+[data-theme='minimal'] .split > .eyebrow {
+  padding-top: 0.55em;
+}
+
+[data-theme='minimal'] .statement {
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  line-height: 1.22;
+  max-width: 24em;
+}
+
+[data-theme='minimal'] .service {
+  grid-template-columns: 3.5rem 4fr 6fr;
+  padding: 20px 0;
+}
+
+[data-theme='minimal'] .service-number {
+  color: var(--color-muted);
+}
+
+/* Quote: plain, in line with everything else. */
+[data-theme='minimal'] .quote {
+  background: none;
+  border-top: 1px solid var(--color-border);
+}
+
+[data-theme='minimal'] .quote figure {
+  max-width: none;
+  margin: 0;
+  padding-left: calc(25% + 36px);
+  text-align: left;
+}
+
+[data-theme='minimal'] .quote blockquote::before {
+  content: none;
+}
+
+[data-theme='minimal'] .quote blockquote p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  letter-spacing: -0.03em;
+  text-wrap: pretty;
+  max-width: 24em;
+}
+
+[data-theme='minimal'] .quote figcaption {
+  margin-top: 28px;
+  font-size: 0.9rem;
+}
+
+[data-theme='minimal'] .quote figcaption strong {
+  font-weight: 500;
+}
+
+/* Contact: the same white page, not a dark band. */
+[data-theme='minimal'] .contact {
+  background: none;
+  color: inherit;
+  border-top: 1px solid var(--color-border);
+}
+
+[data-theme='minimal'] .contact .eyebrow,
+[data-theme='minimal'] .contact .lede,
+[data-theme='minimal'] .contact dt {
+  opacity: 1;
+  color: var(--color-muted);
+}
+
+[data-theme='minimal'] .contact h2 {
+  font-size: clamp(2.1rem, 5.2vw, 4.25rem);
+  letter-spacing: -0.04em;
+  margin-top: 0.5em;
+}
+
+[data-theme='minimal'] .contact-email {
+  font-weight: 500;
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  letter-spacing: -0.02em;
+  margin-top: 32px;
+}
+
+[data-theme='minimal'] .contact-details > div {
+  border-top-color: var(--color-border);
+}
+
+[data-theme='minimal'] .site-footer {
+  border-top: 1px solid var(--color-border);
+}
+
+[data-theme='minimal'] .footer-note {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 6px;
+}
+
+/* Narrow windows and phones. */
+@media (max-width: 1024px) {
+  [data-theme='minimal'] .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  [data-theme='minimal'] .hero-text > *,
+  [data-theme='minimal'] .hero-text > .eyebrow {
+    grid-column: 1;
+    grid-row: auto;
+    padding-top: 0;
+  }
+
+  [data-theme='minimal'] .hero h1 {
+    grid-row: auto;
+  }
+
+  [data-theme='minimal'] .split > .eyebrow {
+    padding-top: 0;
+  }
+
+  [data-theme='minimal'] .service {
+    grid-template-columns: 3rem 1fr;
+  }
+
+  [data-theme='minimal'] .quote figure {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  [data-theme='minimal'] .service {
+    grid-template-columns: 1fr;
+  }
+}
